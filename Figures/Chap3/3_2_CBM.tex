@@ -1,0 +1,50 @@
+
+\begin{circuitikz}
+
+\def\branchA{0}
+\def\branchB{1.5}
+\def\branchC{4.5}
+\def\branchD{6.5}
+\def\branchE{8.5}
+\def\posContrY{-4}
+
+    \fill[blue!30] (\branchA-0.9,0.25) rectangle (\branchA+3,2.75);
+    \fill[green!30] (\branchA+3.2,0.25) rectangle (\branchA+8,2.75);
+
+\draw
+    (\branchA,0) to[C, l=$C$] (\branchA,3)
+    (\branchB,1) to[R, l=$g_{leak}$] (\branchB,3) 
+    (\branchB,1) to[battery1, l=$E_{leak}$] (\branchB,0) 
+    (\branchC,1) to[vR, l=$g_{ion_1}$] (\branchC,3) 
+    (\branchC,1) to[battery1, l=$E_{ion_1}$] (\branchC,0) 
+    (\branchD,1) to[battery1, l=$E_{ion_n}$] (\branchD,0)
+    (\branchD,1) to[vR, l=$g_{ion_n}$] (\branchD,3)
+    (\branchE,3) to[american current source, l=$I_{ext}$] (\branchE,0)
+    (\branchA,3) -- (\branchE,3)
+    (\branchA,0) -- (\branchE,0);
+    
+    \node at (5.25, 1.25) {...};
+
+    \draw[->] (\branchA-1,0) to[out=135, in=225] (\branchA-1,3) node[left] {V};
+
+
+    \node [draw, rectangle,  minimum width=5cm, minimum height=4cm, align=center, label=above:$Controller$ ] at (0,\posContrY)(Controller) {};
+    \node [draw, fill=white, rectangle,  minimum width=3cm, minimum height=1cm ] at (0,\posContrY+1)(I1) {Ion channel 1};
+    \node [draw, fill=white, rectangle,  minimum width=3cm, minimum height=1cm ] at (0,\posContrY-1)(I2) {Ion channel n};
+    \node at (0,\posContrY) {...};
+    \node [draw, fill=white, circle, align=center, radius=0.2cm] at (2,\posContrY)(plus1) {+};
+    \node [draw, fill=white, circle, align=center, radius=0.01cm ] at (-2,\posContrY)(plus2) {};
+    \draw [->] (plus2) -- (I1.west);
+    \draw [->] (plus2) -- (I2.west);
+    \draw [->] (I1.east) -- (plus1);
+    \draw [->] (I2.east) -- (plus1);
+    \node [draw, fill=white, circle, align=center, radius=0.2cm, right=2cm of plus1] (plus3) {+};
+    \draw [->] (plus1) -- node[above] { \colorbox{green!30}{$I_{int}$} } node[below] { $\cdot (-1)$ }(plus3);
+    \node [draw, rectangle,  minimum width=3cm, minimum height=1cm, label=above:$Plant$, right=1cm of plus3 ](Plant) {Membrane};
+    \draw [->] (plus3) -- node[above] { \colorbox{blue!30}{$I_{m}$} } (Plant);
+    \draw [->] (Plant) -- node[above] {V} (11, \posContrY);
+    \draw (Plant.east) to[out=0, in=350] (Controller.south);
+    \draw (Controller.south) edge[->, out=180, in=250] (plus2);
+
+    \draw [->] (plus3.south |- 0, -2) -- node[right] {$I_{ext}$} (plus3);
+\end{circuitikz}
