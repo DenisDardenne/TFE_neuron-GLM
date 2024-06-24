@@ -6,6 +6,5 @@ The codes used to built the GLM coming from the matlab code of the Alison Weber 
 The CBM used in the second part (DA neuron and STG neuron) are the ones of Arthur Fyon. (Fyon, A. (2024). CORR_2024 (Version 1.0.0) [Computer software]) (https://github.com/arthur-fyon/CORR_2024) <br>
 
 **Corrections** <br>
-The Figures 3.8a and 3.8b have been udpated (the y-label).
-The Figure 3.7 : the outlier of strong bursting is uncorrect, this figure will be update soon. (before end of June) -> problem line 711 (n must be 1001 and not 1000)
-
+The Figures 3.8a and 3.8b have been udpated (the y-label). <br>
+The Figure 3.7 has been updated (the "outlier" of strong bursting) -> problem line 711 <br>
