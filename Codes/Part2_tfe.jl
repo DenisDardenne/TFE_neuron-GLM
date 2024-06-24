@@ -708,7 +708,7 @@ if analyse_filter
     N = convert(Int,(read_data("SavingOfComputation/WithArthurFyonCodes_$(nt)/N_SIM/$(NAME[1]).csv")[1]) )
     n = 501
     Ratio_A_1 =  H_carac[n:n+N-1,1] ./  H_carac[n:n+N-1,2]
-    n = 1000
+    n = 1001
     Ratio_A_2 = H_carac[n:n+N-1,1] ./  H_carac[n:n+N-1,2]
     burst = H_carac[501:end,14]
 
