@@ -7,4 +7,5 @@ The CBM used in the second part (DA neuron and STG neuron) are the ones of Arthu
 
 **Corrections** <br>
 The Figures 3.8a and 3.8b have been udpated (the y-label).
+The Figure 3.7 : the outlier of strong bursting is uncorrect, this figure will be update soon. (before end of June) -> problem line 711 (n must be 1001 and not 1000)
 
